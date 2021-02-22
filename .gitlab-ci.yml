@@ -65,3 +65,14 @@ test-jdk8:
   artifacts:
     paths:
       - target/site/jacoco/jacoco.xml
+
+java:
+  stage: test
+  script:
+    - mvn verify
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+        - target/failsafe-reports/TEST-*.xml
